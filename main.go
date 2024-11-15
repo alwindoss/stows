@@ -17,8 +17,6 @@ const (
 	stompQueue    = "/queue/test"
 )
 
-// var upgrader = websocket.NewUpgrader()
-
 func main() {
 	http.HandleFunc(webSocketPath, handleWebSocket)
 
@@ -96,5 +94,6 @@ func (s *stompWebSocketConn) Write(p []byte) (int, error) {
 }
 
 func (s *stompWebSocketConn) Close() error {
+	fmt.Printf("Hello there")
 	return s.conn.Close(websocket.StatusBadGateway, "Simply closing")
 }
